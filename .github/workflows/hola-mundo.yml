@@ -1,12 +1,13 @@
-name: hola-mundo #Nombre del workflow
-on: [push] #evento que lo activará
-jobs: #Definición de los jobs
-  hola-mundo: #Nombre del job
-    runs-on: ubuntu-latest #Maquina en la que correrá
-    steps: #Lista de steps del job hola-mundo
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-      - name: Run index
-        run: node index.js
+name: Aprendiendo GitHub Actions
+run-name: ¡Estoy aprendiendo GitHub Actions!
+on: [push]
+jobs:
+  hola-mundo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Definir variable
+        run: echo "USERNAME=${{ github.actor }}" >> $GITHUB_ENV
+      - name: Correr script
+        run: python hola_mundo.py
